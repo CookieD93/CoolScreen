@@ -21,9 +21,14 @@ $ForeCast =
 
 $ForeCast = simplexml_load_file("http://www.yr.no/place/Denmark/Zealand/Roskilde/forecast_hour_by_hour.xml");
 echo "<pre>";
-var_dump ($ForeCast);
-echo "</pre>";
+//var_dump ($ForeCast->forecast->tabular->time);
+//$NextForeCast = $ForeCast->forecast->tabular->time;
+$NextForeCast = $ForeCast->forecast->tabular->time;
 
+echo $NextForeCast[0]->symbol->attributes(){"name"}."</br>";
+echo $NextForeCast[0]->temperature->attributes(){"value"};
+echo $NextForeCast[0]->temperature->attributes(){"unit"};
+ echo "</pre>";
 
  ?>
 </body>
