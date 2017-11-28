@@ -32,5 +32,6 @@ echo $NextForeCast[0]->temperature->attributes()["unit"];
  echo "</pre>";
 
  ?>
+    <img src="cam.jpg" width="400">
 </body>
 </html>
