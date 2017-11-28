@@ -6,6 +6,7 @@
 </head>
 <body>
  <?php
+ date_default_timezone_set("Europe/Copenhagen");
  echo date("H:i");
 
 
