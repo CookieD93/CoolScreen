@@ -25,9 +25,9 @@ echo "<pre>";
 //$NextForeCast = $ForeCast->forecast->tabular->time;
 $NextForeCast = $ForeCast->forecast->tabular->time;
 
-echo $NextForeCast[0]->symbol->attributes(){"name"}."</br>";
-echo $NextForeCast[0]->temperature->attributes(){"value"};
-echo $NextForeCast[0]->temperature->attributes(){"unit"};
+echo $NextForeCast[0]->symbol->attributes()["name"]."</br>";
+echo $NextForeCast[0]->temperature->attributes()["value"]."&deg; ";
+echo $NextForeCast[0]->temperature->attributes()["unit"];
  echo "</pre>";
 
  ?>
