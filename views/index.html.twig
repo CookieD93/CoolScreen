@@ -5,9 +5,35 @@
     <title>Index</title>
 </head>
 <body>
- <p>{{ Date }}</p>
- <p>{{ WeatherSymbolName }}</p>
- <p>{{ WeatherTemperatue }} &deg; C</p>
+<p>{{ Date }}</p>
+<p>{{ WeatherSymbolName }}</p>
+<p>{{ WeatherTemperatue }} &deg; C</p>
+<p>lokal temperatur:  {{ lokaltemperatur.Temperatur }} &deg; C</p>
 <img src="cam.jpg" width="400">
+
+<ul>
+    {% for opskrift in Opskrifter %}
+        <li>
+            <p> Id : {{ opskrift.Id }}</br>
+                Titel : {{ opskrift.Titel }}</br>
+                Ingredienser : {{ opskrift.Ingredienser }}</br>
+                Opskrift : {{ opskrift.Opskrift }}</p></li>
+    {% endfor %}
+</ul>
+<form method="post">
+    <input type="text" name="GetOpskriftIdFelt" placeholder="Skriv id for at søge efter id">
+    <input type="submit" name="GetOpskriftKnap" value="Vis opkskrifter">
+</form>
+</br>
+<form method="post">
+    <input type="number" name="UpdateOpskriftId" placeholder="Id" title="Skriv Id for at kunne opdatere Opskrift">
+    <input type="submit" name="UpdateOpskriftSubmit" value="Opdater Opskrift">
+    </br>
+    </br>
+    <input type="text" name="CreateOpskriftTitel" placeholder="Titel" required>
+    <input type="text" name="CreateOpskriftIngredienser" placeholder="Ingredienser" required>
+    <input type="text" name="CreateOpskrift" placeholder="Opskrift" required>
+    <input type="submit" name="CreatueOpskriftSubmit" value="Lav Opskrift">
+</form>
 </body>
 </html>
