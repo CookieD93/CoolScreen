@@ -85,9 +85,37 @@ if (isset($_POST['DeleteOpskriftSubmit'])){
     curl_setopt($curl, CURLOPT_URL, "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter/".$_POST['DeleteOpskriftId']);
     $result = curl_exec($curl);
     curl_close($curl);
-
-
 }
+//NOTER
+if (isset($_POST['GetNoteKnap'])){
+    $uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Noter";
+    $jsondata = file_get_contents($uri);
+    $convertToAssociativeArray = true;
+    $Noter = json_decode($jsondata, $convertToAssociativeArray);
+}
+//TODO
+/*if (isset($_POST['NoteSubmit'])){
+    $Data = array("Titel"=>$_POST['CreateOpskriftTitel'],"Ingredienser"=>$_POST['CreateOpskriftIngredienser'],"Opskrift"=>$_POST['CreateOpskrift']);
+    $Data = json_encode($Data);
+    $result = CallAPI("POST","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter",$Data);
+}
+if (isset($_POST['UpdateCustomerSubmit'])){
+    $Data = array("Id"=>$_POST['UpdateOpskriftId'],"Titel"=>$_POST['CreateOpskriftTitel'],"Ingredienser"=>$_POST['CreateOpskriftIngredienser'],"Opskrift"=>$_POST['CreateOpskrift']);
+    $Data = json_encode($Data);
+    $result = CallAPI("PUT","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter",$Data);
+}
+if (isset($_POST['DeleteNoteSubmit'])){
+    // $data = array("Id"=>$_POST['DeleteOpskriftId']);
+    //$data = json_encode($data);
+    // $result = CallAPI("DELETE","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter/".$_POST['DeleteOpskriftId']);
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_URL, "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Noter/".$_POST['DeleteNoteId']);
+    $result = curl_exec($curl);
+    curl_close($curl);
+}*/
+
 
 
 require_once 'vendor/autoload.php';
@@ -97,6 +125,6 @@ $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
 $template = $twig->loadTemplate('index.html.twig');
-$parametersToTwig = array("Date"=>$date,"WeatherSymbolName" => $WeatherSymbolName,"WeatherTemperatue" => $WeatherTemperature, "TemperatureUnit" =>$TemperatureUnit, "Opskrifter"=>$Opskrifter,"lokaltemperatur"=>$lokaltemperatur);
+$parametersToTwig = array("Date"=>$date,"WeatherSymbolName" => $WeatherSymbolName,"WeatherTemperatue" => $WeatherTemperature, "TemperatureUnit" =>$TemperatureUnit, "Opskrifter"=>$Opskrifter,"lokaltemperatur"=>$lokaltemperatur,"Noter"=>$Noter);
 echo $template->render($parametersToTwig);
 
