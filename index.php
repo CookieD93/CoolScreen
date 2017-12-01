@@ -55,8 +55,8 @@ if (isset($_POST['GetOpskriftKnap'])&!empty($_POST['GetOpskriftIdFelt'])){
     $uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter" . $_POST['GetOpskriftIdFelt'];
     $jsondata = file_get_contents($uri);
     $convertToAssociativeArray = true;
-    $Customers = json_decode($jsondata, $convertToAssociativeArray);
-    $Customers = array($Customers);
+    $Opskrifter = json_decode($jsondata, $convertToAssociativeArray);
+    $Opskrifter = array($Opskrifter);
 }
 elseif (isset($_POST['GetOpskriftKnap'])){
     $uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter";
@@ -74,6 +74,19 @@ if (isset($_POST['UpdateCustomerSubmit'])){
     $Data = array("Id"=>$_POST['UpdateOpskriftId'],"Titel"=>$_POST['CreateOpskriftTitel'],"Ingredienser"=>$_POST['CreateOpskriftIngredienser'],"Opskrift"=>$_POST['CreateOpskrift']);
     $Data = json_encode($Data);
     $result = CallAPI("PUT","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter",$Data);
+}
+if (isset($_POST['DeleteOpskriftSubmit'])){
+   // $data = array("Id"=>$_POST['DeleteOpskriftId']);
+    //$data = json_encode($data);
+   // $result = CallAPI("DELETE","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter/".$_POST['DeleteOpskriftId']);
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_URL, "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter/".$_POST['DeleteOpskriftId']);
+    $result = curl_exec($curl);
+    curl_close($curl);
+
+
 }
 
 
