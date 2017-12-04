@@ -10,6 +10,7 @@
 <p>{{ WeatherTemperatue }} &deg; C</p>
 <p>lokal temperatur:  {{ lokaltemperatur.Temperatur }} &deg; C</p>
 <img src="cam.jpg" width="400">
+<!-- flyttet til egen side
 <h3>Opskrifter</h3>
 <ul>
     {% for opskrift in Opskrifter %}
@@ -20,6 +21,7 @@
                 Opskrift : {{ opskrift.Opskrift }}</p></li>
     {% endfor %}
 </ul>
+-->
 <p><form method="post">
     <input type="text" name="GetOpskriftIdFelt" placeholder="Skriv id for at søge efter id">
     <input type="submit" name="GetOpskriftKnap" value="Vis opkskrifter">
@@ -57,7 +59,7 @@
 </br>
 <form method="post">
     <input type="number" name="UpdateNoteId" placeholder="Id" title="Skriv Id for at kunne opdatere note">
-    <input type="text" name="CreateNoteTitel" placeholder="Titel" title="Titel til din note"></br>
+    <input type="text" name="CreateNoteTitel" placeholder="Titel" title="Titel til din note" required>
     <input type="submit" name="UpdateNoteSubmit" value="Opdater Note"> </br>
     <input type="text" name="CreateNoteNote" placeholder="Skriv her" title="Skriv din tekst her">
     <input type="submit" name="CreateNoteSubmit" value="Opret note">

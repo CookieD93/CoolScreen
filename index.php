@@ -1,7 +1,7 @@
 <?php
 
 $Opskrifter = "";
-
+$Noter = "";
 function CallAPI($method, $url, $data = false)
 {
     $curl = curl_init();
@@ -58,12 +58,13 @@ if (isset($_POST['GetOpskriftKnap'])&!empty($_POST['GetOpskriftIdFelt'])){
     $Opskrifter = json_decode($jsondata, $convertToAssociativeArray);
     $Opskrifter = array($Opskrifter);
 }
+/*flyttet til sin egen side
 elseif (isset($_POST['GetOpskriftKnap'])){
     $uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter";
     $jsondata = file_get_contents($uri);
     $convertToAssociativeArray = true;
     $Opskrifter = json_decode($jsondata, $convertToAssociativeArray);
-}
+}*/
 
 if (isset($_POST['CreatueOpskriftSubmit'])){
     $Data = array("Titel"=>$_POST['CreateOpskriftTitel'],"Ingredienser"=>$_POST['CreateOpskriftIngredienser'],"Opskrift"=>$_POST['CreateOpskrift']);
@@ -93,16 +94,16 @@ if (isset($_POST['GetNoteKnap'])){
     $convertToAssociativeArray = true;
     $Noter = json_decode($jsondata, $convertToAssociativeArray);
 }
-//TODO
-/*if (isset($_POST['NoteSubmit'])){
-    $Data = array("Titel"=>$_POST['CreateOpskriftTitel'],"Ingredienser"=>$_POST['CreateOpskriftIngredienser'],"Opskrift"=>$_POST['CreateOpskrift']);
+//TODO Test når webserive er funktionel
+if (isset($_POST['NoteSubmit'])){
+    $Data = array("Titel"=>$_POST['CreateNoteTitel'],"Note"=>$_POST['CreateNoteNote']);
     $Data = json_encode($Data);
-    $result = CallAPI("POST","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter",$Data);
+    $result = CallAPI("POST","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Noter",$Data);
 }
-if (isset($_POST['UpdateCustomerSubmit'])){
-    $Data = array("Id"=>$_POST['UpdateOpskriftId'],"Titel"=>$_POST['CreateOpskriftTitel'],"Ingredienser"=>$_POST['CreateOpskriftIngredienser'],"Opskrift"=>$_POST['CreateOpskrift']);
+if (isset($_POST['UpdateNoteSubmit'])){
+    $Data = array("Id"=>$_POST['UpdateNoteId'],"Titel"=>$_POST['CreateNoteTitel'],"Note"=>$_POST['CreateNoteNote']);
     $Data = json_encode($Data);
-    $result = CallAPI("PUT","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter",$Data);
+    $result = CallAPI("PUT","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Noter",$Data);
 }
 if (isset($_POST['DeleteNoteSubmit'])){
     // $data = array("Id"=>$_POST['DeleteOpskriftId']);
@@ -114,7 +115,7 @@ if (isset($_POST['DeleteNoteSubmit'])){
     curl_setopt($curl, CURLOPT_URL, "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Noter/".$_POST['DeleteNoteId']);
     $result = curl_exec($curl);
     curl_close($curl);
-}*/
+}
 
 
 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opskrifter</title>
+</head>
+<body>
+<h3>Opskrifter</h3>
+
+<ul>
+    {% for opskrift in Opskrifter %}
+        <li>
+            <p> Id : {{ opskrift.Id }}</br>
+                Titel : {{ opskrift.Titel }}</br>
+                Ingredienser : {{ opskrift.Ingredienser }}</br>
+                Opskrift : {{ opskrift.Opskrift }}</p></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
