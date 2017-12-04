@@ -5,12 +5,13 @@
     <title>Index</title>
 </head>
 <body>
-<p>{{ Date }}</p>
-<p>{{ WeatherSymbolName }}</p>
-<p>{{ WeatherTemperatue }} &deg; C</p>
-<p>lokal temperatur:  {{ lokaltemperatur.Temperatur }} &deg; C</p>
-<img src="cam.jpg" width="400">
-<!-- flyttet til egen side-->
+{% include 'Nav.php' %}
+<div id="Date">{{ Date }}</div>
+<div id="SymbolName">{{ WeatherSymbolName }}</div>
+<div id="Temperature">{{ WeatherTemperatue }} &deg; C</div>
+<div id="FridgeTemperature">lokal temperatur:  {{ lokaltemperatur.Temperatur }} &deg; C</div>
+<img src="../cam.jpg" width="400">
+<!-- flyttet til egen side
 <h3>Opskrifter</h3>
 <ul>
     {% for opskrift in Opskrifter %}
@@ -26,12 +27,7 @@
     <input type="submit" name="GetOpskriftKnap" value="Vis opkskrifter">
 </form>
 </br>
-<form method="post">
-    <input type="number" name="DeleteOpskriftId" placeholder="Id" title="Skriv Id på den opskrift du vil slette" required>
-    <input type="submit" name="DeleteOpskriftSubmit" value="Slet Opskrift">
 
-</form>
-</br>
 <form method="post">
     <input type="number" name="UpdateOpskriftId" placeholder="Id" title="Skriv Id for at kunne opdatere Opskrift">
     <input type="submit" name="UpdateOpskriftSubmit" value="Opdater Opskrift">
@@ -42,7 +38,15 @@
     <input type="text" name="CreateOpskrift" placeholder="Opskrift" required>
     <input type="submit" name="CreatueOpskriftSubmit" value="Lav Opskrift">
 </form>
+</br>
+<form method="post">
+    <input type="number" name="DeleteOpskriftId" placeholder="Id" title="Skriv Id på den opskrift du vil slette" required>
+    <input type="submit" name="DeleteOpskriftSubmit" value="Slet Opskrift">
+-->
+
+</form>
 </p>
+<div id="Noter">
 <h3>Noter</h3>
 <ul>
 {% for Note in Noter %}
@@ -52,6 +56,7 @@
             Note : {{ Note.Note }}</br> </p>
 {% endfor %}
 </ul>
+</div>
 <p><form method="post">
     <input type="submit" name="GetNoteKnap" value="Vis Noter">
 </form>

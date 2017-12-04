@@ -5,6 +5,17 @@
     <title>Ny Opskrift</title>
 </head>
 <body>
-
+{% include 'Nav.php' %}
+<a href="../controllers/NyOpskrift.php">Ny Opskrift</a>
+<form method="post">
+    <input type="number" name="UpdateOpskriftId" placeholder="Id" title="Skriv Id for at kunne opdatere Opskrift">
+    <input type="submit" name="UpdateOpskriftSubmit" value="Opdater Opskrift">
+    </br>
+    </br>
+    <input type="text" name="CreateOpskriftTitel" placeholder="Titel" required>
+    <input type="text" name="CreateOpskriftIngredienser" placeholder="Ingredienser" required>
+    <input type="text" name="CreateOpskrift" placeholder="Opskrift" required>
+    <input type="submit" name="CreatueOpskriftSubmit" value="Lav Opskrift">
+</form>
 </body>
 </html>
