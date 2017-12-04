@@ -58,13 +58,13 @@ if (isset($_POST['GetOpskriftKnap'])&!empty($_POST['GetOpskriftIdFelt'])){
     $Opskrifter = json_decode($jsondata, $convertToAssociativeArray);
     $Opskrifter = array($Opskrifter);
 }
-/*flyttet til sin egen side
+//flyttet til sin egen side
 elseif (isset($_POST['GetOpskriftKnap'])){
     $uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter";
     $jsondata = file_get_contents($uri);
     $convertToAssociativeArray = true;
     $Opskrifter = json_decode($jsondata, $convertToAssociativeArray);
-}*/
+}
 
 if (isset($_POST['CreatueOpskriftSubmit'])){
     $Data = array("Titel"=>$_POST['CreateOpskriftTitel'],"Ingredienser"=>$_POST['CreateOpskriftIngredienser'],"Opskrift"=>$_POST['CreateOpskrift']);
