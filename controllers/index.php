@@ -87,16 +87,15 @@ if (isset($_POST['DeleteOpskriftSubmit'])){
     curl_setopt($curl, CURLOPT_URL, "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter/".$_POST['DeleteOpskriftId']);
     $result = curl_exec($curl);
     curl_close($curl);
-}*/
+}
 //NOTER
 if (isset($_POST['GetNoteKnap'])){
     $uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note";
     $jsondata = file_get_contents($uri);
     $convertToAssociativeArray = true;
     $Noter = json_decode($jsondata, $convertToAssociativeArray);
-    print_r($Noter);
 }
-//TODO Test når webserive er funktionel
+
 if (isset($_POST['NoteSubmit'])){
     $Data = array("Titel"=>$_POST['CreateNoteTitel'],"Note"=>$_POST['CreateNoteNote']);
     $Data = json_encode($Data);
@@ -117,7 +116,7 @@ if (isset($_POST['DeleteNoteSubmit'])){
     curl_setopt($curl, CURLOPT_URL, "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note/".$_POST['DeleteNoteId']);
     $result = curl_exec($curl);
     curl_close($curl);
-}
+}*/
 
 
 
