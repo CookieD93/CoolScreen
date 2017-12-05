@@ -1,5 +1,5 @@
 <?php
-include "../functions/CallAPI.php";
+include "functions/CallAPI.php";
 
 if (isset($_POST['CreatueOpskriftSubmit'])){
     $Data = array("Titel"=>$_POST['CreateOpskriftTitel'],"Ingredienser"=>$_POST['CreateOpskriftIngredienser'],"Opskrift"=>$_POST['CreateOpskrift']);
@@ -12,9 +12,9 @@ if (isset($_POST['UpdateCustomerSubmit'])){
     $result = CallAPI("PUT","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter",$Data);
 }
 
-require_once '../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 Twig_Autoloader::register();
-$loader = new Twig_Loader_Filesystem('../views');
+$loader = new Twig_Loader_Filesystem('views');
 $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));

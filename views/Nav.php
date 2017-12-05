@@ -1,6 +1,8 @@
-<nav>
-    <a href="../controllers/index.php">Forside</a>
 
-    <a href="../controllers/Opskrifter.php">Opskrifter</a>
-    <a href="../controllers/noter.php">Noter</a>
+
+<nav>
+    <a href="index.php">Forside</a>
+
+    <a href="Opskrifter.php">Opskrifter</a>
+    <a href="noter.php">Noter</a>
 </nav>
