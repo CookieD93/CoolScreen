@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% include 'Nav.php' %}
+<a href="../controllers/nynote.php">Ny Note</a>
+<div id="Noter">
+    <h3>Noter</h3>
+    <ul>
+        {% for Note in Noter %}
+        <li>
+            <p> Id : {{ Note.Id }}</br>
+                Titel : {{ Note.Titel }}</br>
+                Note : {{ Note.Note }}</br> </p>
+            {% endfor %}
+    </ul>
+</div>
+<form method="post">
+    <input type="number" name="DeleteNoteId" placeholder="Id" title="Skriv Id på den Note du vil slette" required>
+    <input type="submit" name="DeleteNoteSubmit" value="Slet Note">
+</form>
+</body>
+</html>

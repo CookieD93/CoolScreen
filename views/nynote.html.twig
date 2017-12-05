@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ny Note</title>
+</head>
+<body>
+{% include 'Nav.php' %}
+<a href="../controllers/nynote.php">Ny Note</a>
+
+<form method="post">
+    <input type="number" name="UpdateNoteId" placeholder="Id" title="Skriv Id for at kunne opdatere note">
+    <input type="submit" name="UpdateNoteSubmit" value="Opdater Note">
+</br>
+</br>
+    <input type="text" name="CreateNoteTitel" placeholder="Titel" title="Titel til din note" required>
+    <input type="text" name="CreateNoteNote" placeholder="Skriv her" title="Skriv din tekst her">
+    <input type="submit" name="CreateNoteSubmit" value="Opret note">
+</form>
+</body>
+</html>
