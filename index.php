@@ -25,7 +25,7 @@ if (isset($_POST['GetOpskriftKnap'])&!empty($_POST['GetOpskriftIdFelt'])){
     $Opskrifter = json_decode($jsondata, $convertToAssociativeArray);
     $Opskrifter = array($Opskrifter);
 }
-
+$imagenocache="cam.jpg?".filemtime('cam.jpg');
 
 require_once 'vendor/autoload.php';
 Twig_Autoloader::register();
@@ -34,7 +34,7 @@ $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
 $template = $twig->loadTemplate('index.html.twig');
-$parametersToTwig = array("Date"=>$date,"WeatherSymbolName" => $WeatherSymbolName,"WeatherTemperatue" => $WeatherTemperature, "TemperatureUnit" =>$TemperatureUnit, "Opskrifter"=>$Opskrifter,"lokaltemperatur"=>$lokaltemperatur,"Noter"=>$Noter);
+$parametersToTwig = array("imagenocache"=>$imagenocache,"Date"=>$date,"WeatherSymbolName" => $WeatherSymbolName,"WeatherTemperatue" => $WeatherTemperature, "TemperatureUnit" =>$TemperatureUnit, "Opskrifter"=>$Opskrifter,"lokaltemperatur"=>$lokaltemperatur,"Noter"=>$Noter);
 echo $template->render($parametersToTwig);
 
 ?>

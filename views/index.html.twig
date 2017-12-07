@@ -5,6 +5,7 @@
     <title>Index</title>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+
 <script>
     function startTime() {
         var today = new Date();
@@ -22,6 +23,7 @@
         return i;
     }
 </script>
+
 </head>
 <body onload="startTime()">
 <article>
@@ -41,10 +43,11 @@
                 
             </div>
         
+
             <div id="FridgeTemperature">Køleskab:  {{ lokaltemperatur.Temperatur }} &deg;C</div>
             <label for="fridgeImgCheck"><i class="fa fa-camera fa-fw"></i></label>
             <input type="checkbox" name="fridgeImgCheck" id="fridgeImgCheck">
-            <img src="cam.jpg" id="fridgeImg"11>
+            <img src="{{ imagenocache }}" id="fridgeImg"11>
         </aside>
         
         
