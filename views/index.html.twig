@@ -3,74 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+<script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('Time').innerHTML =
+        h + ":" + m;
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
+</script>
 </head>
-<body>
-{% include 'Nav.php' %}
-<div id="Date">{{ Date }}</div>
-<div id="SymbolName">{{ WeatherSymbolName }}</div>
-<div id="Temperature">{{ WeatherTemperatue }} &deg; C</div>
-<div id="FridgeTemperature">lokal temperatur:  {{ lokaltemperatur.Temperatur }} &deg; C</div>
-<img src="cam.jpg" width="400">
-<!-- flyttet til egen side
-<h3>Opskrifter</h3>
-<ul>
-    {% for opskrift in Opskrifter %}
-        <li>
-            <p> Id : {{ opskrift.Id }}</br>
-                Titel : {{ opskrift.Titel }}</br>
-                Ingredienser : {{ opskrift.Ingredienser }}</br>
-                Opskrift : {{ opskrift.Opskrift }}</p></li>
-    {% endfor %}
-</ul>
-<p><form method="post">
-    <input type="text" name="GetOpskriftIdFelt" placeholder="Skriv id for at søge efter id">
-    <input type="submit" name="GetOpskriftKnap" value="Vis opkskrifter">
-</form>
-</br>
-
-<form method="post">
-    <input type="number" name="UpdateOpskriftId" placeholder="Id" title="Skriv Id for at kunne opdatere Opskrift">
-    <input type="submit" name="UpdateOpskriftSubmit" value="Opdater Opskrift">
-    </br>
-    </br>
-    <input type="text" name="CreateOpskriftTitel" placeholder="Titel" required>
-    <input type="text" name="CreateOpskriftIngredienser" placeholder="Ingredienser" required>
-    <input type="text" name="CreateOpskrift" placeholder="Opskrift" required>
-    <input type="submit" name="CreatueOpskriftSubmit" value="Lav Opskrift">
-</form>
-</br>
-<form method="post">
-    <input type="number" name="DeleteOpskriftId" placeholder="Id" title="Skriv Id på den opskrift du vil slette" required>
-    <input type="submit" name="DeleteOpskriftSubmit" value="Slet Opskrift">
--->
-
-</form>
-</p>{#
-<div id="Noter">
-<h3>Noter</h3>
-<ul>
-{% for Note in Noter %}
-    <li>
-        <p> Id : {{ Note.Id }}</br>
-            Titel : {{ Note.Titel }}</br>
-            Note : {{ Note.Note }}</br> </p>
-{% endfor %}
-</ul>
-</div>
-<p><form method="post">
-    <input type="submit" name="GetNoteKnap" value="Vis Noter">
-</form>
-</br>
-<form method="post">
-    <input type="number" name="UpdateNoteId" placeholder="Id" title="Skriv Id for at kunne opdatere note">
-    <input type="text" name="CreateNoteTitel" placeholder="Titel" title="Titel til din note" required>
-    <input type="submit" name="UpdateNoteSubmit" value="Opdater Note"> </br>
-    <input type="text" name="CreateNoteNote" placeholder="Skriv her" title="Skriv din tekst her">
-    <input type="submit" name="CreateNoteSubmit" value="Opret note">
-</form>
-<form method="post">
-    <input type="number" name="DeleteNoteId" placeholder="Id" title="Skriv Id på den Note du vil slette" required>
-    <input type="submit" name="DeleteNoteSubmit" value="Slet Note">
-</form>#}
+<body onload="startTime()">
+<article>
+    {% include 'Nav.php' %}
+    <section>
+        <img src="assets/My-Little-Pony-PNG-Pic.png" width="400">
+        <aside>
+            <div id="DateTime">
+                <span id="Time"></span>
+                <span id="Date">{{ Date }}</span>
+            </div>
+        
+            <div id="SymbolName">
+                <p>{{ WeatherTemperatue }} <span id="temperaturSignatur">&deg;C</span></p>
+                
+                <img src="assets/weatherIcons/{{ WeatherSymbolName }}.png" alt="">
+                
+            </div>
+        
+            <div id="FridgeTemperature">Køleskab:  {{ lokaltemperatur.Temperatur }} &deg;C</div>
+            <label for="fridgeImgCheck"><i class="fa fa-camera fa-fw"></i></label>
+            <input type="checkbox" name="fridgeImgCheck" id="fridgeImgCheck">
+            <img src="cam.jpg" id="fridgeImg"11>
+        </aside>
+        
+        
+        
+        
+        </p>{#
+        <div id="Noter">
+        <h3>Noter</h3>
+        <ul>
+        {% for Note in Noter %}
+            <li>
+                <p> Id : {{ Note.Id }}</br>
+                    Titel : {{ Note.Titel }}</br>
+                    Note : {{ Note.Note }}</br> </p>
+        {% endfor %}
+        </ul>
+        </div>
+        <p><form method="post">
+            <input type="submit" name="GetNoteKnap" value="Vis Noter">
+        </form>
+        </br>
+        <form method="post">
+            <input type="number" name="UpdateNoteId" placeholder="Id" title="Skriv Id for at kunne opdatere note">
+            <input type="text" name="CreateNoteTitel" placeholder="Titel" title="Titel til din note" required>
+            <input type="submit" name="UpdateNoteSubmit" value="Opdater Note"> </br>
+            <input type="text" name="CreateNoteNote" placeholder="Skriv her" title="Skriv din tekst her">
+            <input type="submit" name="CreateNoteSubmit" value="Opret note">
+        </form>
+        <form method="post">
+            <input type="number" name="DeleteNoteId" placeholder="Id" title="Skriv Id på den Note du vil slette" required>
+            <input type="submit" name="DeleteNoteSubmit" value="Slet Note">
+        </form>#}
+    </section>
+</article>
 </body>
 </html>

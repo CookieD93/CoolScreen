@@ -7,6 +7,12 @@ $jsondata = file_get_contents($uri);
 $convertToAssociativeArray = true;
 $Noter = json_decode($jsondata, $convertToAssociativeArray);
 
+$NoteXml = simplexml_load_file("http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note");
+//var_dump ($ForeCast->forecast->tabular->time);
+//$NextForeCast = $ForeCast->forecast->tabular->time;
+$NoteXml = $NoteXml->NoteClass;
+
+
 if (isset($_POST['DeleteNoteSubmit'])){
     // $data = array("Id"=>$_POST['DeleteOpskriftId']);
     //$data = json_encode($data);
@@ -26,5 +32,5 @@ $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
 $template = $twig->loadTemplate('noter.html.twig');
-$parametersToTwig = array("Noter" =>$Noter);
+$parametersToTwig = array("Noter" =>$Noter, "NoteXml"=>$NoteXml);
 echo $template->render($parametersToTwig);

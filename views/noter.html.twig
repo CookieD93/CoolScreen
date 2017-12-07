@@ -2,13 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Noter</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
-{% include 'Nav.php' %}
-<a href="nynote.php">Ny Note</a>
-<div id="Noter">
-    <h3>Noter</h3>
+<article>
+    {% include 'Nav.php' %}
+
+    <section id="Noter">
+        <div id="header">
+                <h3>Noter</h3>
+                <!-- <a href="NyOpskrift.php" class="abtn"><i class="fa fa-fw fa-plus"></i> Ny Opskrift</a> -->
+                <a href="nynote.php" class="abtn"><i class="fa fa-fw fa-plus"></i> Ny Note</a>
+
+            </div>
+            <ul>
+                
+
+                {% for Note in NoteXml %}
+                    <li>
+                        <a href="note.php?id={{ Note.Id }}">
+                            <h4>{{ Note.Titel }}</h4>
+                            <p>{{ Note.Note | nl2br }}</p>
+                            <!-- <form method="post">
+                                <input type="hidden" name="DeleteNoteId" value="{{ Note.Id }}">
+                                <button type="submit" name="DeleteNoteSubmit"><i class="fa fa-fw fa-times fa-lg"></i></button>
+                            </form> -->
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+    </section>
+
+</article>
+<!-- <div id="Noter">
     <ul>
         {% for Note in Noter %}
         <li>
@@ -21,6 +49,6 @@
 <form method="post">
     <input type="number" name="DeleteNoteId" placeholder="Id" title="Skriv Id på den Note du vil slette" required>
     <input type="submit" name="DeleteNoteSubmit" value="Slet Note">
-</form>
+</form> -->
 </body>
 </html>

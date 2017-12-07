@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Noter</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <style>
+        body {
+            position: fixed;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<article>
+    <a href="noter.php" id="GoBackToNotes"></a>
+
+    {% include 'Nav.php' %}
+
+                    
+                    <div id="note">
+                        <h4>{{ NoteXmlSingle.Titel }}</h4>
+                        <p>{{ NoteXmlSingle.Note | nl2br }}</p>
+                        <form method="post">
+                            <input type="hidden" name="DeleteNoteId" value="{{ Note.Id }}">
+                            <a href="nynote.php?edit={{ NoteXmlSingle.Id }}" style="color: #2194EF; text-decoration: none; font-size: 13px; display: inline-block; padding: 7px;"><i class="fa fa-fw fa-edit"></i> Ret Note</a>
+                            <!-- <button type="submit" name="DeleteNoteSubmit"><i class="fa fa-fw fa-times"></i> Slet Note</button> -->
+                            <button
+                                onclick='return confirm("Er du sikker på du vil slette noten?")'
+                                style="color: #e74c3c;"
+                                type='submit'
+                                value="{{ NoteXmlSingle.Id }}"
+                                name="DeleteNoteSubmit"><i class="fa fa-times fa-fw"></i> Slet Note</button>
+
+                        </form>
+                    </div>
+
+                
+<!--     <div id="note">
+        <h4>Titel</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis commodi, id impedit aliquid enim. Iure omnis, at error eaque fugiat quisquam, neque accusamus cumque id modi nostrum tenetur ut soluta? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores ducimus expedita repudiandae maiores commodi iusto voluptatum repellat non saepe ipsam, consectetur itaque ex! Quibusdam cupiditate deserunt, qui, ullam vel ab.</p>
+        <form method="post">
+            <input type="hidden" name="DeleteNoteId" value="{{ Note.Id }}">
+            <button type="submit" name="DeleteNoteSubmit"><i class="fa fa-fw fa-times fa-lg"></i></button>
+        </form>  
+    </div> -->
+    <section id="Noter">
+        <div id="header">
+                <h3>Noter</h3>
+                <a href="nynote.php" class="abtn"><i class="fa fa-fw fa-plus"></i> Ny Note</a>
+
+            </div>
+            <ul>
+                
+
+                {% for Note in NoteXml %}
+                    <li>
+                        {% if theOpendNote == Note.Id %}
+                            <a href="note.php" class="theOpened">
+                        {% else %}
+                            <a href="note.php">
+                        {% endif %}   
+                            <h4>{{ Note.Titel }}</h4>
+                            <p>{{ Note.Note | nl2br }}</p>
+                        </a>
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+                
+                {% for Note in Noter %}
+                    <li>
+                        <h4>{{ Note.Titel }}</h4>
+                        <p>{{ Note.Note }}</p>
+                        <form method="post">
+                            <input type="hidden" name="DeleteNoteId" value="{{ Note.Id }}">
+                            <button type="submit" name="DeleteNoteSubmit"><i class="fa fa-fw fa-times fa-lg"></i></button>
+                        </form>
+                    </li>
+
+                {% endfor %}
+            </ul>
+    </section>
+
+</article>
+</body>
+</html>
