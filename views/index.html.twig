@@ -5,7 +5,7 @@
     <title>Index</title>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
     function startTime() {
         var today = new Date();
@@ -23,64 +23,57 @@
         return i;
     }
 </script>
-
 </head>
 <body onload="startTime()">
 <article>
     {% include 'Nav.php' %}
     <section>
-        <img src="assets/My-Little-Pony-PNG-Pic.png" width="400">
+        <!-- <img src="assets/My-Little-Pony-PNG-Pic.png" width="400"> -->
+        {% if cookies.newsWidget == "true" %}
+        <div id="News">
+            {% for new in NewsXml %}
+
+            <p>- {{ new.title }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <aside>
+            {% if cookies.dateTimeWidget == "true" %}
             <div id="DateTime">
                 <span id="Time"></span>
                 <span id="Date">{{ Date }}</span>
             </div>
+            {% endif %}
+            {% if cookies.weatherWidget == "true" %}
         
             <div id="SymbolName">
                 <p>{{ WeatherTemperatue }} <span id="temperaturSignatur">&deg;C</span></p>
                 
-                <img src="assets/weatherIcons/{{ WeatherSymbolName }}.png" alt="">
+                <img src="assets/weatherIcons/{{ WeatherSymbolVar }}.png" alt="">
+                <i>{{WeatherSymbolName}}</i>
                 
             </div>
-        
-
+            {% endif %}
+            {% if cookies.weatherWidget == "true" %}
+            
             <div id="FridgeTemperature">Køleskab:  {{ lokaltemperatur.Temperatur }} &deg;C</div>
+            {% endif %}
+
             <label for="fridgeImgCheck"><i class="fa fa-camera fa-fw"></i></label>
             <input type="checkbox" name="fridgeImgCheck" id="fridgeImgCheck">
-            <img src="{{ imagenocache }}" id="fridgeImg"11>
+            <img src="cam.jpg" id="fridgeImg"11>
         </aside>
         
-        
-        
-        
-        </p>{#
-        <div id="Noter">
-        <h3>Noter</h3>
-        <ul>
-        {% for Note in Noter %}
-            <li>
-                <p> Id : {{ Note.Id }}</br>
-                    Titel : {{ Note.Titel }}</br>
-                    Note : {{ Note.Note }}</br> </p>
-        {% endfor %}
-        </ul>
-        </div>
-        <p><form method="post">
-            <input type="submit" name="GetNoteKnap" value="Vis Noter">
-        </form>
-        </br>
-        <form method="post">
-            <input type="number" name="UpdateNoteId" placeholder="Id" title="Skriv Id for at kunne opdatere note">
-            <input type="text" name="CreateNoteTitel" placeholder="Titel" title="Titel til din note" required>
-            <input type="submit" name="UpdateNoteSubmit" value="Opdater Note"> </br>
-            <input type="text" name="CreateNoteNote" placeholder="Skriv her" title="Skriv din tekst her">
-            <input type="submit" name="CreateNoteSubmit" value="Opret note">
-        </form>
-        <form method="post">
-            <input type="number" name="DeleteNoteId" placeholder="Id" title="Skriv Id på den Note du vil slette" required>
-            <input type="submit" name="DeleteNoteSubmit" value="Slet Note">
-        </form>#}
     </section>
 </article>
+    <script>
+            $(function(){
+                $("#FridgeTemperature").load("controllers/getTemperature.php?page=getNow");
+                setInterval(function(){
+                    $("#FridgeTemperature").load("controllers/getTemperature.php?page=getNow");
+            },15000)
+        });
+    </script>
 </body>
 </html>

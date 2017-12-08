@@ -117,6 +117,11 @@ aside #SymbolName #temperaturSignatur {
 	right: 0;
 	position: absolute;
 }
+aside #SymbolName i {
+	position: absolute;
+	right: 0;
+	bottom: -10px;
+}
 #DateTime {
 	text-align: right;
 }
@@ -324,4 +329,53 @@ div#note {
 	left: 0;
 	right: 0;
 	bottom: 25%;
+}
+
+#alertBox {
+	background-color: #e74c3c;
+	color: #fff;
+	text-align: center;
+	padding: 5px;
+	margin-top: 10px;
+
+}
+#alertBox p {
+
+}
+#alertBox i {
+	margin-top: 5px;
+	float: left;
+	display: block;
+	font-size: 28px;
+}
+#News {
+	width: 480px;
+	height: 365px;
+	background-color: rgba(255,255,255,0.2);
+	/*padding: 10px 10px 20px 10px;*/
+	border:10px solid rgba(255,255,255,0.0);
+	overflow: hidden;
+	margin-top: 20px;
+}
+#News p{
+	color: #fff;
+	margin-bottom: 5	px;
+}
+
+#settingsForm {
+	color:#FFF;
+}
+
+#settingsForm span {
+	width: 250px;
+	display: inline-block;
+	margin-bottom: 20px;
+}
+#settingsForm button {
+font-size: 1em;
+	
+	padding: 7px 20px;
+	background-color: #2194EF;
+	color: #fff;
+	border:none;
 }

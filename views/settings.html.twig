@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body onload="startTime()">
+<article>
+    {% include 'Nav.php' %}
+    <section>
+        <div id="header">
+            <h3>Indstillinger</h3>
+            <!-- <a href="nynote.php" class="abtn"><i class="fa fa-fw fa-plus"></i> Ny Note</a> -->
+        </div>
+        <form method="post" id="settingsForm">
+
+            <!-- =============================================== -->
+            <div><span>Nyheder er slået
+                {% if cookies.newsWidget == "true" %}
+                    til
+                {% else %}
+                    fra
+                {% endif %}
+             </span><button value="news" name="toggleWidget">Skift</button></div>
+            <!-- =============================================== -->
+
+            <!-- =============================================== -->
+            <div><span>Vejr er slået
+                {% if cookies.weatherWidget == "true" %}
+                    til
+                {% else %}
+                    fra
+                {% endif %}
+            </span><button value="weather" name="toggleWidget">Skift</button></div>
+            <!-- =============================================== -->
+            
+            <!-- =============================================== -->
+            <div><span>Køleskabs Temperatur er slået
+                {% if cookies.localTempWidget == "true" %}
+                    til
+                {% else %}
+                    fra
+                {% endif %}
+            </span><button value="localTemp" name="toggleWidget">Skift</button></div>
+            <!-- =============================================== -->
+
+            <!-- =============================================== -->
+            <div><span>Dato og Ur er slået
+                {% if cookies.dateTimeWidget == "true" %}
+                    til
+                {% else %}
+                    fra
+                {% endif %}
+            </span><button value="dateTime" name="toggleWidget">Skift</button></div>
+            
+        </form>
+        <!-- <h1>{{ app.request.cookies.getValue('newsWidget') }}</h1> -->
+        
+
+    </section>
+</article>
+</body>
+</html>

@@ -9,13 +9,20 @@ $jsondata = file_get_contents($uri);
 $convertToAssociativeArray = true;
 $Noter = json_decode($jsondata, $convertToAssociativeArray);
 
-$noteId = $_GET['id'];
-$NoteXml = simplexml_load_file("http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note");
-//var_dump ($ForeCast->forecast->tabular->time);
-//$NextForeCast = $ForeCast->forecast->tabular->time;
-$NoteXml = $NoteXml->NoteClass;
 
-$NoteXmlSingle = simplexml_load_file("http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note/$noteId");
+// $noteId = $_GET['id'];
+$uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note/".$_GET['id'];
+// $uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note/48";
+$jsondata = file_get_contents($uri);
+$convertToAssociativeArray = true;
+$NoteSingle = json_decode($jsondata, $convertToAssociativeArray);
+
+// $NoteXml = simplexml_load_file("http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note");
+// //var_dump ($ForeCast->forecast->tabular->time);
+// //$NextForeCast = $ForeCast->forecast->tabular->time;
+// $NoteXml = $NoteXml->NoteClass;
+
+// $NoteXmlSingle = simplexml_load_file("http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note/$noteId");
 
 //$NextForeCast = $ForeCast->forecast->tabular->time;
 // $NoteXmlSingle = $NoteXmlSingle;
@@ -41,5 +48,5 @@ $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
 $template = $twig->loadTemplate('note.html.twig');
-$parametersToTwig = array("NoteXmlSingle" => $NoteXmlSingle, "NoteXml"=>$NoteXml, "theOpendNote"=>$theOpendNote);
+$parametersToTwig = array("NoteSingle" => $NoteSingle, "Noter"=>$Noter, "theOpendNote"=>$theOpendNote);
 echo $template->render($parametersToTwig);
