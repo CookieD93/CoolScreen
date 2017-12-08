@@ -17,13 +17,13 @@
 		{% include 'Nav.php' %}
 		<section>
 			<form method="post">
-            <input type="hidden" name="UpdateNoteId" value="{{ NoteXml.Id }}">
+            <input type="hidden" name="UpdateNoteId" value="{{ NoteSingle.Id }}">
             
             <label for="Titel">Titel</label>
-            <textarea class="keyboard" id="Titel" required name="CreateNoteTitel" placeholder="Titel" style="width: 630px; resize: vertical; min-height: 60px;">{{ NoteXml.Titel }}</textarea>
+            <textarea class="keyboard" id="Titel" required name="CreateNoteTitel" placeholder="Titel" style="width: 630px; resize: vertical; min-height: 60px;">{{ NoteSingle.Titel }}</textarea>
 
             <label for="Ingredienser">Note</label>
-            <textarea class="keyboard" id="Ingredienser" name="CreateNoteNote" placeholder="Skriv her" style="width: 630px; resize: vertical; min-height: 60px;">{{ NoteXml.Note }}</textarea>
+            <textarea class="keyboard" id="Ingredienser" name="CreateNoteNote" placeholder="Skriv her" style="width: 630px; resize: vertical; min-height: 60px;">{{ NoteSingle.Note }}</textarea>
             
             <input type="submit" class="btn" name="{{ addEditFunction }}" value="{{ addEditTxt }} Note">
 

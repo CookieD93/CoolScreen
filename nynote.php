@@ -9,9 +9,17 @@ $NoteXml ="";
 if(isset($_GET['edit'])){
 	$addEditFunction = "UpdateNoteSubmit";
 	$addEditTxt = "Ret";
-	$NoteXml = simplexml_load_file("http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note/".$_GET['edit']);
+	// $NoteXml = simplexml_load_file("http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note/".$_GET['edit']);
 	// $NoteXml = $NoteXml;
 	// var_dump($NoteXml);
+
+
+$uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note/".$_GET['edit'];
+// $uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note/48";
+$jsondata = file_get_contents($uri);
+$convertToAssociativeArray = true;
+$NoteSingle = json_decode($jsondata, $convertToAssociativeArray);
+
 
 }
 
@@ -44,5 +52,5 @@ $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
 $template = $twig->loadTemplate('nynote.html.twig');
-$parametersToTwig = array("NoteXml"=>$NoteXml, "addEditFunction"=>$addEditFunction, "addEditTxt"=>$addEditTxt);
+$parametersToTwig = array("NoteSingle"=>$NoteSingle, "addEditFunction"=>$addEditFunction, "addEditTxt"=>$addEditTxt);
 echo $template->render($parametersToTwig);

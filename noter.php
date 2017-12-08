@@ -1,16 +1,14 @@
 <?php
 $Noter = "";
-//TODO test når webservice er funktionel og ikke sender xml
 
 $uri = "http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note";
 $jsondata = file_get_contents($uri);
 $convertToAssociativeArray = true;
 $Noter = json_decode($jsondata, $convertToAssociativeArray);
 
-$NoteXml = simplexml_load_file("http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note");
-//var_dump ($ForeCast->forecast->tabular->time);
-//$NextForeCast = $ForeCast->forecast->tabular->time;
-$NoteXml = $NoteXml->NoteClass;
+// $NoteXml = simplexml_load_file("http://coolscreenwebservice.azurewebsites.net/Service1.svc/Note");
+// $NoteXml = $NoteXml->NoteClass;
+
 
 
 if (isset($_POST['DeleteNoteSubmit'])){
@@ -32,5 +30,5 @@ $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
 $template = $twig->loadTemplate('noter.html.twig');
-$parametersToTwig = array("Noter" =>$Noter, "NoteXml"=>$NoteXml);
+$parametersToTwig = array("Noter" =>$Noter);
 echo $template->render($parametersToTwig);
