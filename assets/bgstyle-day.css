@@ -10,8 +10,9 @@
 
 	body {
 		background: url('blurbg-phone.jpg');
-		background-attachment: auto;
-		background-size: cover;
+		background-attachment: fixed;
+		background-size: auto;
+		background-repeat: no-repeat;
 	}
 	nav {
 		background-color: #2194EF;
