@@ -4,7 +4,8 @@ include "functions/CallAPI.php";
 
 $addEditFunction = "CreateNoteSubmit";
 $addEditTxt = "Tilføj";
-$NoteXml ="";
+$NoteSingle ="";
+
 
 if(isset($_GET['edit'])){
 	$addEditFunction = "UpdateNoteSubmit";

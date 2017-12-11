@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Noter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=.9, user-scalable=0">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <script src="assets/js/daynightScript.js"></script>
+    <link rel="stylesheet" href="assets/bgstyle-day.css" id="nightModeStyle">
 </head>
-<body>
+<body onload="nightModeStyle()">
 <article>
     {% include 'Nav.php' %}
 
     <section id="Noter">
         <div id="header">
-                <h3>Noter</h3>
+                <h3><i class="fa fa-fw fa-sticky-note"></i> Noter</h3>
                 <!-- <a href="NyOpskrift.php" class="abtn"><i class="fa fa-fw fa-plus"></i> Ny Opskrift</a> -->
                 <a href="nynote.php" class="abtn"><i class="fa fa-fw fa-plus"></i> Ny Note</a>
 
@@ -25,30 +28,11 @@
                         <a href="note.php?id={{ Note.Id }}">
                             <h4>{{ Note.Titel }}</h4>
                             <p>{{ Note.Note | nl2br }}</p>
-                            <!-- <form method="post">
-                                <input type="hidden" name="DeleteNoteId" value="{{ Note.Id }}">
-                                <button type="submit" name="DeleteNoteSubmit"><i class="fa fa-fw fa-times fa-lg"></i></button>
-                            </form> -->
                         </a>
                     </li>
                 {% endfor %}
             </ul>
     </section>
-
 </article>
-<!-- <div id="Noter">
-    <ul>
-        {% for Note in Noter %}
-        <li>
-            <p> Id : {{ Note.Id }}</br>
-                Titel : {{ Note.Titel }}</br>
-                Note : {{ Note.Note }}</br> </p>
-            {% endfor %}
-    </ul>
-</div>
-<form method="post">
-    <input type="number" name="DeleteNoteId" placeholder="Id" title="Skriv Id på den Note du vil slette" required>
-    <input type="submit" name="DeleteNoteSubmit" value="Slet Note">
-</form> -->
 </body>
 </html>

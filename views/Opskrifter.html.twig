@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Opskrifter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=.9, user-scalable=0">
+    
+    
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <script src="assets/js/daynightScript.js"></script>
+    <link rel="stylesheet" href="assets/bgstyle-day.css" id="nightModeStyle">
 </head>
-<body>
+<body onload="nightModeStyle()">
     <article>
         {% include 'Nav.php' %}
         <section id="Opskrifter">
             <div id="header">
-                <h3>Opskrifter</h3>
+                <h3><i class="fa fa-fw fa-cutlery"></i>Opskrifter</h3>
                 <a href="NyOpskrift.php" class="abtn"><i class="fa fa-fw fa-plus"></i> Ny Opskrift</a>
             </div>
             

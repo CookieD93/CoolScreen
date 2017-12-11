@@ -1,23 +1,5 @@
 <?php
 
-
-// if(isset($_POST['toggleNews'])){
-// 	if(@$_COOKIE["newsWidget"] == "1")
-// 	{
-// 		setcookie ("newsWidget", "",0);
-// 	}else {
-// 		setcookie ("newsWidget", "1",time() + (10 * 365 * 24 * 60 * 60));
-// 	}
-// 	header("location:settings.php");
-// }
-
-$newsText = "fra";
-// if(isset($_COOKIE['newsWidget']) && ($_COOKIE['newsWidget']=="1")){
-// 	$newsText = "til";
-// }
-
-
-
 function toggleWidget($widgetToToggle){
 	if(isset($_COOKIE[$widgetToToggle.'Widget'])){
 		setcookie ($widgetToToggle.'Widget', "",0);
@@ -30,7 +12,6 @@ function toggleWidget($widgetToToggle){
 if(isset($_POST['toggleWidget'])){
 	toggleWidget($_POST['toggleWidget']);
 }
- 
 
 
 $NewsXml = simplexml_load_file("https://www.dr.dk/nyheder/service/feeds/udland");
@@ -59,7 +40,7 @@ $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
 $template = $twig->loadTemplate('settings.html.twig');
-$parametersToTwig = array("newsText"=>$newsText,"cookies"=>$_COOKIE);
+$parametersToTwig = array("cookies"=>$_COOKIE);
 echo $template->render($parametersToTwig);
 
 ?>

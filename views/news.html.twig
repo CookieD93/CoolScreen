@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nyheder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=.9, user-scalable=0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="assets/js/daynightScript.js"></script>
+    <link rel="stylesheet" href="assets/bgstyle-day.css" id="nightModeStyle">
+    
+</head>
+<body onload="nightModeStyle()">
+<article>
+    {% include 'Nav.php' %}
+    <section id="newsPage">
+        <div id="header">
+            <h3><i class="fa fa-fw fa-newspaper-o"></i> Nyheder - {{ newsFrom }}</h3>
+            <div>
+                <br>
+                <span>Se nyheder fra</span>
+                <select name="" id="select">
+                    <option value="def">-Vælg-</option>
+
+                    <option value="allenyheder">Alle Nyheder</option>
+                    <option value="indland">Indland</option>
+                    <option value="udland">Udland</option>
+                    <option value="penge">Penge</option>
+                    <option value="politik">Politik</option>
+                    <option value="kultur">Kultur</option>
+                    <option value="viden">Viden</option>
+                    <option value="sporten">Sporten</option>
+                </select>
+                <script>
+                    $( "#select" ).change(function() {
+                        var id = $(this).val();
+                        var url = window.location.pathname;
+                        window.location.href=url+"?n="+id;
+                    });
+                </script>
+            </div>
+        </div>
+        <dl>
+            {% for new in NewsXml %}
+                <dt><b>{{ new.title }}</b></dt>
+                <dd>{{ new.description }}</dd>
+            {% endfor %}
+        </dl>
+    </section>
+</article>
+</body>
+</html>

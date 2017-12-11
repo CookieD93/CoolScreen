@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Ny Opskrift</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=.9, user-scalable=0">
+    
+    
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -11,8 +14,10 @@
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <link href="assets/keyboard/css/keyboard.css" rel="stylesheet">
     <script src="assets/keyboard/js/jquery.keyboard.js"></script>
+    <script src="assets/js/daynightScript.js"></script>
+    <link rel="stylesheet" href="assets/bgstyle-day.css" id="nightModeStyle">
 </head>
-<body>
+<body onload="nightModeStyle()">
 <article>
     {% include 'Nav.php' %}
     <section>
@@ -24,12 +29,13 @@
             
             <!-- <textarea class="keyboard"></textarea> -->
             <label for="Titel">Titel</label>
-            <textarea class="keyboard" id="Titel" required name="CreateOpskriftTitel" placeholder="Titel" style="width: 630px; resize: vertical; min-height: 60px;">{{ opskriftEditArray.Titel }}</textarea>
+            <textarea class="keyboard" id="Titel" required name="CreateOpskriftTitel" placeholder="Titel">{{ opskriftEditArray.Titel }}</textarea>
+            
 
             <label for="Ingredienser">Ingredienser</label>
-            <textarea class="keyboard" id="Ingredienser" name="CreateOpskriftIngredienser" placeholder="Ingredienser" style="width: 630px; resize: vertical; min-height: 60px;">{{ opskriftEditArray.Ingredienser }}</textarea>
+            <textarea class="keyboard" id="Ingredienser" name="CreateOpskriftIngredienser" placeholder="Ingredienser">{{ opskriftEditArray.Ingredienser }}</textarea>
             <label id="Opskrift">Opskrift</label>
-            <textarea class="keyboard" id="Opskrift" name="CreateOpskrift" placeholder="Opskrift" style="width: 630px; resize: vertical; min-height: 60px;">{{ opskriftEditArray.Opskrift }}</textarea>
+            <textarea class="keyboard" id="Opskrift" name="CreateOpskrift" placeholder="Opskrift">{{ opskriftEditArray.Opskrift }}</textarea>
             <!-- <input type="text" name="CreateOpskriftTitel" placeholder="Titel" required> -->
             <!-- <input type="text" name="CreateOpskriftIngredienser" placeholder="Ingredienser" required> -->
             <!-- <input type="text" name="CreateOpskrift" placeholder="Opskrift" required> -->
