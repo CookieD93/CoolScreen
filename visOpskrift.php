@@ -23,6 +23,6 @@ $loader = new Twig_Loader_Filesystem('views');
 $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
-$template = $twig->loadTemplate('LæsOpskrift.html.twig');
+$template = $twig->loadTemplate('visOpskrift.html.twig');
 $parametersToTwig = array("Opskrift"=>$Opskrifter);
 echo $template->render($parametersToTwig);
