@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Læs Opskrift</title>
-    <meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=.9, user-scalable=0">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-    <script src="assets/js/daynightScript.js"></script>
-    <link rel="stylesheet" href="assets/bgstyle-day.css" id="nightModeStyle">
+	<meta charset="UTF-8">
+	<title>Læs Opskrift</title>
+	<meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=.9, user-scalable=0">
+	<link rel="stylesheet" href="assets/style.css">
+	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+	<script src="assets/js/daynightScript.js"></script>
+	<link rel="stylesheet" href="assets/bgstyle-day.css" id="nightModeStyle">
 </head>
 <body onload="nightModeStyle()">
 <article>
-	{% include 'Nav.php' %}
+    {% include 'Nav.php' %}
 	<section id="Opskrift">
-		{% for opskrift in Opskrift %}
+        {% for opskrift in Opskrift %}
 			<div id="header">
-                <h2>{{ opskrift.Titel }}</h2>
+				<h2>{{ opskrift.Titel }}</h2>
                 <a href="NyOpskrift.php?edit={{ opskrift.Id }}" class="abtn"><i class="fa fa-fw fa-edit"></i> Ret Opskrift</a>
                 <form method="post">
 	                <button
