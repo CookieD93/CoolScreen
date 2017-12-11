@@ -29,7 +29,7 @@ if (isset($_POST['UpdateCustomerSubmit'])){
     $Data = array("Id"=>$_POST['UpdateOpskriftId'],"Titel"=>$_POST['CreateOpskriftTitel'],"Ingredienser"=>$_POST['CreateOpskriftIngredienser'],"Opskrift"=>$_POST['CreateOpskrift']);
     $Data = json_encode($Data);
     $result = CallAPI("PUT","http://coolscreenwebservice.azurewebsites.net/Service1.svc/Opskrifter",$Data);
-    header("location:visOpskrift.php?id=$_POST[UpdateOpskriftId]");
+    header("location:LæsOpskrift.php?id=$_POST[UpdateOpskriftId]");
 }
 
 require_once 'vendor/autoload.php';
