@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Noter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=.9, user-scalable=0">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <script src="assets/js/daynightScript.js"></script>
+    <link rel="stylesheet" href="assets/bgstyle-day.css" id="nightModeStyle">
     <style>
         body {
             position: fixed;
@@ -12,7 +15,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="nightModeStyle()">
 
 <article>
     <a href="noter.php" id="GoBackToNotes"></a>
@@ -37,7 +40,7 @@
     </div>
     <section id="Noter">
         <div id="header">
-                <h3>Noter</h3>
+                <h3><i class="fa fa-fw fa-sticky-note"></i> Noter</h3>
                 <a href="nynote.php" class="abtn"><i class="fa fa-fw fa-plus"></i> Ny Note</a>
 
             </div>

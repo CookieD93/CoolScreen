@@ -1,3 +1,22 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media screen  and (min-width : 1px) and (max-width : 480px) {
+	
+	.ui-keyboard {
+		display: none !important;
+		text-align: center;
+		padding: .3em;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 16000;
+		/* see issue #484 */
+		-ms-touch-action: manipulation;
+		touch-action: manipulation;
+	}
+
+
+}
+
 /* keyboard - jQuery UI Widget */
 .ui-keyboard {
 	text-align: center;

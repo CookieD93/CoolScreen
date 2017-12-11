@@ -1,0 +1,20 @@
+@media screen  and (min-width : 481px) {
+
+	body {
+		background: url('blurbg-night.jpg');
+		background-attachment: fixed;
+		background-size: cover;
+	}
+}
+@media screen  and (min-width : 1px) and (max-width : 480px) {
+
+	body {
+		background: url('blurbg-night-phone.jpg');
+		background-attachment: fixed;
+		background-size: auto;
+		background-repeat: no-repeat;
+	}
+	nav {
+		background-color: #c0392b;
+	}
+}

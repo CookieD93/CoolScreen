@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Forside</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9,maximum-scale=.9, user-scalable=0">
+
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="assets/js/daynightScript.js"></script>
+    <link rel="stylesheet" href="assets/bgstyle-day.css" id="nightModeStyle">
 <script>
     function startTime() {
         var today = new Date();
@@ -24,11 +28,10 @@
     }
 </script>
 </head>
-<body onload="startTime()">
+<body onload="startTime();nightModeStyle();">
 <article>
     {% include 'Nav.php' %}
     <section>
-        <!-- <img src="assets/My-Little-Pony-PNG-Pic.png" width="400"> -->
         {% if cookies.newsWidget == "true" %}
         <div id="News">
             {% for new in NewsXml %}
@@ -36,6 +39,9 @@
             <p>- {{ new.title }}</p>
             {% endfor %}
         </div>
+        {% else %}
+            <img id="mlpImg" src="assets/My-Little-Pony-PNG-Pic.png" width="400">
+
         {% endif %}
 
         <aside>
@@ -51,7 +57,7 @@
                 <p>{{ WeatherTemperatue }} <span id="temperaturSignatur">&deg;C</span></p>
                 
                 <img src="assets/weatherIcons/{{ WeatherSymbolVar }}.png" alt="">
-                <i>{{WeatherSymbolName}}</i>
+                <i>{{weatherDescription}}</i>
                 
             </div>
             {% endif %}
@@ -62,7 +68,7 @@
 
             <label for="fridgeImgCheck"><i class="fa fa-camera fa-fw"></i></label>
             <input type="checkbox" name="fridgeImgCheck" id="fridgeImgCheck">
-            <img src="cam.jpg" id="fridgeImg"11>
+            <img src="cam.jpg" id="fridgeImg">
         </aside>
         
     </section>
