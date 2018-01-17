@@ -3,7 +3,7 @@ function nightModeStyle(){
     var hours=Clock.getHours()
     var min=Clock.getMinutes()
     var sec = Clock.getSeconds()
-    if(min%2 == 1)
+    if(hours>=7&&hours<=19)//min%2 == 1
     {
         document.getElementById("nightModeStyle").href="assets/bgstyle-night.css";
     }
