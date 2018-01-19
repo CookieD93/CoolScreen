@@ -5,11 +5,11 @@ function nightModeStyle(){
     var sec = Clock.getSeconds()
     if(hours>=7&&hours<=19)//min%2 == 1
     {
-        document.getElementById("nightModeStyle").href="assets/bgstyle-night.css";
+        document.getElementById("nightModeStyle").href="assets/bgstyle-day.css";
     }
     else
-    {
-        document.getElementById("nightModeStyle").href="assets/bgstyle-day.css";
+    {        
+        document.getElementById("nightModeStyle").href="assets/bgstyle-night.css";
     }
     var t = setTimeout(nightModeStyle, 500);
 }
